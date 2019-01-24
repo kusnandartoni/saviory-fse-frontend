@@ -1,0 +1,88 @@
+<div class="register">
+    <span class="register__title">Register</span>
+    <form class="form register__form" #formRegister="ngForm" (ngSubmit)="submitNewUser()">
+      <div class="form__row-group">
+        <div class="form__row">
+          <label for="firstName" class="form__label">First name</label>
+          <input 
+                class="form__input" 
+                [(ngModel)]="user.firstName" 
+                type="text" 
+                id="firstName" 
+                name="firstName" 
+                required>
+        </div>
+        <div class="form__row">
+          <label for="lastName" class="form__label">last name</label>
+          <input 
+                class="form__input" 
+                [(ngModel)]="user.lastName"
+                type="text" 
+                id="lastName" 
+                name="lastName" >
+        </div>
+      </div>
+      <div class="form__row-group">
+        <div class="form__row">
+          <label for="email" class="form__label">email</label>
+          <input 
+                class="form__input" 
+                [(ngModel)]="user.email" 
+                type="email" 
+                id="email" 
+                name="email" 
+                required>
+        </div>
+        <div class="form__row">
+          <label for="password" class="form__label">password</label>
+          <input 
+                class="form__input" 
+                [(ngModel)]="user.password" 
+                type="password" 
+                id="password" 
+                name="password" 
+                required>
+        </div>
+      </div>
+      <div class="form__row-group">
+        <div class="form__row">
+          <label for="phone" class="form__label">Phone number</label>
+          <input 
+                class="form__input" 
+                [(ngModel)]="user.phone" 
+                type="text" 
+                id="phone" 
+                name="phone">
+        </div>
+        <div class="form__row">
+          <label for="country" class="form__label">Country select</label>
+          <select id="country" name="country" [(ngModel)]="user.country" class="form__input">
+            <option value="Indonesia">Indonesia</option>
+            <option value="Malaysia">Malaysia</option>
+            <option value="India">India</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form__row-group">
+        <div class="form__row">
+          <label for="birthday" class="form__label">Birthday</label>
+          <input 
+                type="date" 
+                id="birthday" 
+                [(ngModel)]="user.birthday" 
+                name="birthday" 
+                class="form__input" 
+                required>
+        </div>
+      </div>
+      <div class="form__row-group justify-content-start align-items-baseline">
+        <input type="checkbox" [(ngModel)]='agree' id="agree" name="agree">
+        <label for="agree">By Signing up your agree to privacy policy & term of service</label>
+      </div>
+      <div class="form__row-group">
+        <button type="submit" class="form__btn w-100" [disabled]="!agree">register</button>
+      </div>
+      
+    </form>  
+  </div>
