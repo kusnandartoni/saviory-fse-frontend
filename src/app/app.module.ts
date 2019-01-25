@@ -12,6 +12,7 @@ import { AccountListComponent } from './pages/account-list/account-list.componen
 import { AccountEditComponent } from './pages/account-edit/account-edit.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AngularWebStorageModule } from "angular-web-storage";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     HttpClientModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    AngularWebStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
