@@ -1,0 +1,84 @@
+.edit {
+    margin-top: 5rem;
+
+    &__title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    &__container {
+        margin-top: 3rem;
+        display: flex;
+        border: 1px solid #666666;
+    }
+
+    &__image-box {
+        width: 300px;
+        background-color: #666666;
+        position: relative;
+    }
+
+    &__image{
+        height: 100%;
+    }
+
+    .upload__btn {
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 10px;
+    }
+
+    &__data {
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__row {
+        width: 100%;
+        display: flex;
+
+        &:not(:last-child){
+            margin-bottom: 10px;
+        }
+
+        &-left {
+            width: 50%;
+            max-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        &-right {
+            margin-left: 5px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+
+    &__action {
+        margin-left: auto;
+        padding: 15px;
+        align-self: flex-end;
+        display: flex;
+        align-items: center;
+
+        & > *:not(:last-child){
+            margin-right: 5px;
+        }
+
+    }
+
+    &__input {
+        width: 100%;
+        &-group {
+            display: flex;
+        }
+    }
+}

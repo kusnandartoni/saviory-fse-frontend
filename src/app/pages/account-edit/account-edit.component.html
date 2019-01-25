@@ -1,0 +1,79 @@
+<div class="edit">
+    <span class="edit__title">EDIT ACCOUNT</span>
+    <div class="edit__container">
+      <div class="edit__image-box">
+        <img src="" alt="Profile picture">
+        <a href="#" class="btn btn-secondary upload__btn">Upload Photo</a>
+      </div>
+      <div class="edit__data">
+        <div class="edit__row">
+          <div class="edit__row-left">
+            <div class="edit__input-group">
+              <input 
+                class="edit__input" 
+                [(ngModel)]="user.firstName" 
+                type="text" 
+                id="firstName" 
+                name="firstName" 
+                required>
+              <input 
+                class="edit__input" 
+                [(ngModel)]="user.lastName"
+                type="text" 
+                id="lastName" 
+                name="lastName" >
+            </div>
+            <input 
+                class="edit__input" 
+                [(ngModel)]="user.email" 
+                type="email" 
+                id="email" 
+                name="email" 
+                required>
+          </div>
+          <div class="edit__row-right">
+            <span>BIRTHDAY</span>
+            <input 
+              type="date" 
+              id="birthday" 
+              [(ngModel)]="user.birthday" 
+              name="birthday" 
+              class="edit__input" 
+              required>
+          </div>
+        </div>
+        <div class="edit__row">
+          <div class="edit__row-left">
+            <span>PHONE</span>
+            <input 
+                class="edit__input" 
+                [(ngModel)]="user.phone" 
+                type="text" 
+                id="phone" 
+                name="phone">
+          </div>
+          <div class="edit__row-right">
+            <span>City:</span>
+            <select id="country" name="country" [(ngModel)]="user.country" class="edit__input">
+              <option value="Jakarta">Jakarta</option>
+              <option value="Bandung">Bandung</option>
+              <option value="Surabaya">Surabaya</option>
+              <option value="Malang">Malang</option>
+              <option value="Bali">Bali</option>
+              <option value="Makasar">Makasar</option>
+            </select>
+          </div>
+        </div>
+        <div class="edit__row">
+          <div class="d-flex justify-content-start align-items-baseline">
+            <input type="checkbox" [(ngModel)]="user.isAdmin" name="admin" id="admin">
+            <label for="admin">Administrator</label>
+          </div>
+        </div>
+      </div>
+      <div class="edit__action">
+        <a class="btn btn-sm btn-secondary" (click)="cancel()">Cancel</a>
+        <a class="btn btn-sm btn-secondary" (click)="save()">Save</a>
+      </div>
+    </div>
+  </div>
