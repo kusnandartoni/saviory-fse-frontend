@@ -1,0 +1,33 @@
+.screen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.header {
+    height: 3rem;
+    background-color: rgb(196, 197, 197);
+
+    display: flex;
+    align-items: center;
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.main {
+    margin-bottom: auto;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgb(196, 197, 197);
+    height: 2rem;
+    font-size: 12px;
+
+}
