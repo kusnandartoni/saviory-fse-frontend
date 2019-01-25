@@ -14,29 +14,56 @@ const httpOptions = {
 })
 export class UserService {
 
-  private userUrl = 'https://zenith-wednesday.glitch.me/users/';
+  private userUrl = 'http://localhost:3000/users';
 
   constructor(
     private http: HttpClient
   ) { }
 
   getUsers (): Observable<User[]> {
-    return this.http.get<User[]>(this.userUrl)
-      .pipe(
-        tap(_ => this.log('fetched users')),
-        catchError(this.handleError('getUsers', []))
-      );
+    return this.http.get<User[]>(this.userUrl).pipe(
+      tap(_ => this.log('fetched users')),
+      catchError(this.handleError('getUsers', []))
+    );
   }
 
-  addUser (user: User): Observable<User> {
-    return this.http.post<User>(this.userUrl, user, httpOptions).pipe(
-      tap((user: User) => this.log(`added user w/ id=${user._id}`)),
-      catchError(this.handleError<User>('addUser'))
+  getUserByName(name: string): Observable<User[]> {
+    const url = `${this.userUrl}?name=${name}`;
+    return this.http.get<User[]>(url).pipe(
+      tap(_ => this.log('fetched users')),
+      catchError(this.handleError('getUsers', []))
+    );
+  }
+
+  getUserByEmail(email: string): Observable<User[]> {
+    const url = `${this.userUrl}?email=${email}`;
+    return this.http.get<User[]>(url).pipe(
+      tap(_ => this.log('fetched users')),
+      catchError(this.handleError('getUsers', []))
+    );
+  }
+
+  getUserByCity(city: string): Observable<User[]> {
+    const url = `${this.userUrl}?country=${city}`;
+    return this.http.get<User[]>(url).pipe(
+      tap(_ => this.log('fetched users')),
+      catchError(this.handleError('getUsers', []))
+    );
+  }
+
+  getUserById(id: string): Observable<User> {
+    const url = `${this.userUrl}/${id}`;
+    return this.http.get<User>(url).pipe(
+      tap(_ => this.log('fetched users')),
+      catchError(this.handleError<any>('getUserById'))
     );
   }
 
   updateUser (user: User): Observable<any> {
-    return this.http.put(this.userUrl, user, httpOptions).pipe(
+    const id = user._id;
+    const url = `${this.userUrl}/${id}`;
+    
+    return this.http.put(url, user, httpOptions).pipe(
       tap(_ => this.log(`updated user id=${user._id}`)),
       catchError(this.handleError<any>('updateUser'))
     );
