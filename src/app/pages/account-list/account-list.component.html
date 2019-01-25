@@ -1,0 +1,64 @@
+<div class="lists">
+  <div class="list__container">
+    <div class="row d-flex justify-content-between align-items-center">
+      <div class="search-group">
+        <input type="text" 
+              #input="ngModel" 
+              [(ngModel)]="search" 
+              (ngModelChange)="searchUser($event)"
+              class="search__input mr-2"
+              >
+        <select name="" id="" [(ngModel)]="searchCategory" class="search__input">
+          <option value="name">filter by name</option>
+          <option value="email">filter by email</option>
+          <option value="country">filte by country</option>
+        </select>
+      </div>
+      <button class="btn btn-secondary">add new account</button>
+    </div>
+    <div class="row d-flex">
+      <div class="table-responsive">
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th></th>
+              <th>NAME</th>
+              <th>PHONE NUMBER</th>
+              <th>BIRTHDAY</th>
+              <th>CITY</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>
+                <div class="initial-box">{{getInitial(user.firstName)}}</div>
+                <img src="" alt="profile picture" *ngIf="1===0">
+              </td>
+              <td class="d-flex flex-column">
+                <span>{{user.firstName}} {{user.lastName}}</span>
+                <span>{{user.email}}</span>
+              </td>
+              <td>{{user.phone}}</td>
+              <td>{{user.birthday}}</td>
+              <td>{{user.country}}</td>
+              <td class="text-right">
+                <div class="action-group">
+                  <a class="btn btn-sm btn-secondary" routerLink="/detail/{{user._id}}">View</a>
+                  <a class="btn btn-sm btn-secondary" routerLink="/edit/{{user._id}}">edit</a>
+                  <a class="clickable" (click)="deleteUser(user)">
+                    <fa-icon [icon]="faTrash"></fa-icon>
+                  </a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end">
+      <ngb-pagination [collectionSize]="50" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>
+    </div>
+
+  </div>
+</div>
