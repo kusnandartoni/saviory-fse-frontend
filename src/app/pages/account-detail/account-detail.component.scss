@@ -1,0 +1,64 @@
+.detail {
+    margin-top: 5rem;
+
+    &__title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    &__container {
+        margin-top: 3rem;
+        display: flex;
+        border: 1px solid #666666;
+    }
+
+    &__image-box {
+        width: 300px;
+        background-color: #666666;
+    }
+    &__image{
+        height: 100%;
+    }
+
+    &__data {
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__row {
+        width: 100%;
+        display: flex;
+
+        &:not(:last-child){
+            margin-bottom: 10px;
+        }
+
+        &-left {
+            width: 50%;
+            max-width: 200px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        &-right {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &__action {
+        margin-left: auto;
+        padding: 15px;
+        align-self: flex-end;
+        display: flex;
+        align-items: center;
+
+        & > *:not(:last-child){
+            margin-right: 5px;
+        }
+
+    }
+}

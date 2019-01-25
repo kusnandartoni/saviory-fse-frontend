@@ -1,0 +1,42 @@
+<div class="detail">
+  <span class="detail__title">ACCOUNT DETAIL</span>
+  <div class="detail__container">
+    <div class="detail__image-box">
+      <img src="" alt="Profile picture">
+    </div>
+    <div class="detail__data">
+      <div class="detail__row">
+        <div class="detail__row-left">
+          <span>{{user.firstName}} {{user.lastName}}</span>
+          <span>{{user.email}}</span>
+        </div>
+        <div class="detail__row-right">
+          <span>BIRTHDAY</span>
+          <span>{{user.birthday}}</span>
+        </div>
+      </div>
+      <div class="detail__row">
+        <div class="detail__row-left">
+          <span>PHONE</span>
+          <span>{{user.phone}}</span>
+        </div>
+        <div class="detail__row-right">
+          <span>City:</span>
+          <span>{{user.country}}</span>
+        </div>
+      </div>
+      <div class="detail__row">
+        <div class="d-flex justify-content-start align-items-baseline">
+          <input type="checkbox" [(ngModel)]="user.isAdmin" disabled name="admin" id="admin">
+          <label for="admin">Administrator</label>
+        </div>
+      </div>
+    </div>
+    <div class="detail__action">
+      <a routerLink="/edit/{{id}}" class="btn btn-sm btn-secondary">edit</a>
+      <a routerLink="/edit" class="btn btn-default" (click)="deleteUser()">
+        <fa-icon [icon]="faTrash"></fa-icon>
+      </a>
+    </div>
+  </div>
+</div>
