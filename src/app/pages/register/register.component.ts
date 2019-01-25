@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
   agree = false;
 
   constructor(
-    private userService: UserService,
+    private authService: AuthService,
     private router: Router
   ) { }
 
@@ -31,9 +31,8 @@ export class RegisterComponent implements OnInit {
   }
 
   submitNewUser(){
-    this.userService.addUser(this.user).subscribe( user=> {
-      console.log(user);
-      alert(`user ${user.firstName} ${user.lastName} berhasil ditambahkan`);
+    this.authService.register(this.user).subscribe( user=> {
+      alert(`user ${this.user.firstName} ${this.user.lastName} berhasil ditambahkan`);
       this.router.navigateByUrl('/list');
     })
   }
