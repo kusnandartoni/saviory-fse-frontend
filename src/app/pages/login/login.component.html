@@ -1,0 +1,20 @@
+<div class="login">
+  <span class="login__title">Login</span>
+  <form class="form login__form" #formLogin="ngForm" (ngSubmit)="login()">
+    <div class="form__row">
+      <label for="email" class="form__label">email</label>
+      <input class="form__input" [(ngModel)]="loginData.email" type="email" name="email" id="email" required >
+    </div>
+    <div class="form__row">
+      <label for="password" class="form__label">password</label>
+      <input class="form__input" [(ngModel)]="loginData.password" type="password" name="password" id="password" required >
+    </div>
+    <div class="form__row">
+      <button type="submit" class="form__btn">Login</button>
+    </div>
+    <div class="form__row flex-row">
+      <span class="form__info">Dont have account? </span>
+      <a routerLink='/register' class="form__link">Register here</a>
+    </div>
+  </form>  
+</div>
