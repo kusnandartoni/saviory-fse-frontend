@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-account-edit',
@@ -21,12 +22,16 @@ export class AccountEditComponent implements OnInit {
     isAdmin: false
   }
   id = this.route.snapshot.params['id'];
+  me: any = {};
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private userService: UserService
-  ) { }
+    private userService: UserService,
+    private authService: AuthService
+  ) {
+    this.sessionCheck();
+   }
 
   ngOnInit() {
 
@@ -34,10 +39,18 @@ export class AccountEditComponent implements OnInit {
   ngAfterViewInit(){
     this.getUser();
   }
+  
+  sessionCheck(){
+    const token = this.authService.sessionCheck(this.router.url);
+    if (token) {
+      this.authService.me(token).subscribe(
+        user=>{this.me = user}
+      );
+    }
+  }
 
   getUser(){
     this.userService.getUserById(this.id).subscribe(user => {
-      console.log(user);
       this.user = user;
     });
   }

@@ -2,8 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model';
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import { Observable, Subject, of } from 'rxjs';
-import { map, debounceTime, distinctUntilChanged, flatMap } from "rxjs/operators";
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from "rxjs/operators";
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account-list',
@@ -19,25 +21,37 @@ export class AccountListComponent implements OnInit {
   search: string = '';
   users: User[];
   faTrash = faTrashAlt;
+  me: any = {};
 
 
   constructor(
-    private userService: UserService
-  ) { }
+    private userService: UserService,
+    private authService: AuthService,
+    private router: Router
+  ) { 
+    this.sessionCheck();
+  }
 
   ngOnInit() {
   }
 
   ngAfterViewInit() {
-    console.log("after view");
     this.getUsers();  
-    const observable = this.searchTextChanged.pipe(
+    this.searchTextChanged.pipe(
       debounceTime(500),
       distinctUntilChanged()
     ).subscribe(model=>{
-      console.log(model);
       this.getFilteredUser();
     })
+  }
+
+  sessionCheck(){
+    const token = this.authService.sessionCheck(this.router.url);
+    if (token) {
+      this.authService.me(token).subscribe(
+        user=>{this.me = user}
+      );
+    }
   }
 
   searchUser(query:string){
