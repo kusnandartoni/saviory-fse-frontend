@@ -2,7 +2,8 @@
   <span class="detail__title">ACCOUNT DETAIL</span>
   <div class="detail__container">
     <div class="detail__image-box">
-      <img [src]="user.imgUrl" alt="Profile picture">
+        <div class="initial-box" *ngIf="!user.imgUrl">{{!!user.firstName ? user.firstName.substr(0,1): '' | uppercase}}{{!!user.lastName ? user.lastName.substr(0,1) : '' | uppercase}}</div>
+      <img [src]="user.imgUrl" *ngIf="user.imgUrl" alt="Profile picture">
     </div>
     <div class="detail__data">
       <div class="detail__row">

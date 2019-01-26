@@ -29,11 +29,16 @@
     }
 
     &__input {
-
+        width: 100%;
+        border: 1px solid #666666;
+        border-radius: 3px;
+        padding: 0 8px;
     }
 
     &__btn {
-
+        width: 100%;
+        border: none;
+        border-radius: 3px;
     }
 
     &__info {
