@@ -13,6 +13,9 @@ import { AccountEditComponent } from './pages/account-edit/account-edit.componen
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AngularWebStorageModule } from "angular-web-storage";
+import { AngularFireModule } from "angularfire2";
+import { AngularFireStorageModule } from "angularfire2/storage";
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { AngularWebStorageModule } from "angular-web-storage";
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
-    AngularWebStorageModule
+    AngularWebStorageModule,
+    AngularFireModule.initializeApp(environment.FIREBASE_CFG),
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
