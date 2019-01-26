@@ -66,7 +66,7 @@
         </div>
         <div class="edit__row">
           <div class="d-flex justify-content-start align-items-baseline">
-            <input type="checkbox" [(ngModel)]="user.isAdmin" name="admin" id="admin">
+            <input type="checkbox" [(ngModel)]="user.isAdmin" [disabled]="!(me.isAdmin)" name="admin" id="admin">
             <label for="admin">Administrator</label>
           </div>
         </div>

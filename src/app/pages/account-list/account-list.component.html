@@ -11,10 +11,10 @@
         <select name="" id="" [(ngModel)]="searchCategory" class="search__input">
           <option value="name">filter by name</option>
           <option value="email">filter by email</option>
-          <option value="country">filte by country</option>
+          <option value="country">filte by city</option>
         </select>
       </div>
-      <button class="btn btn-secondary">add new account</button>
+      <a class="btn btn-secondary" routerLink="/register">add new account</a>
     </div>
     <div class="row d-flex">
       <div class="table-responsive">
@@ -32,7 +32,7 @@
           <tbody>
             <tr *ngFor="let user of users">
               <td>
-                <div class="initial-box">{{getInitial(user.firstName)}}</div>
+                <div class="initial-box">{{getInitial(user.firstName) | uppercase}}{{getInitial(user.lastName) | uppercase}}</div>
                 <img src="" alt="profile picture" *ngIf="1===0">
               </td>
               <td class="d-flex flex-column">
@@ -46,7 +46,7 @@
                 <div class="action-group">
                   <a class="btn btn-sm btn-secondary" routerLink="/detail/{{user._id}}">View</a>
                   <a class="btn btn-sm btn-secondary" routerLink="/edit/{{user._id}}">edit</a>
-                  <a class="clickable" (click)="deleteUser(user)">
+                  <a class="clickable" *ngIf="me.isAdmin" (click)="deleteUser(user)">
                     <fa-icon [icon]="faTrash"></fa-icon>
                   </a>
                 </div>

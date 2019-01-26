@@ -34,7 +34,7 @@
     </div>
     <div class="detail__action">
       <a routerLink="/edit/{{id}}" class="btn btn-sm btn-secondary">edit</a>
-      <a routerLink="/edit" class="btn btn-default" (click)="deleteUser()">
+      <a routerLink="/edit" class="btn btn-default" *ngIf="me.isAdmin || me._id==user._id" (click)="deleteUser()">
         <fa-icon [icon]="faTrash"></fa-icon>
       </a>
     </div>
