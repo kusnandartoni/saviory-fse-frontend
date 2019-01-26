@@ -1,9 +1,11 @@
 <div class="edit">
     <span class="edit__title">EDIT ACCOUNT</span>
+    {{percentage | async}}
     <div class="edit__container">
       <div class="edit__image-box">
-        <img src="" alt="Profile picture">
-        <a href="#" class="btn btn-secondary upload__btn">Upload Photo</a>
+        <img src="{{downloadUrl|async}}" alt="Profile picture">
+        <input type="file" #uploadBtn (change)="startUpload($event.target.files)" class="d-none">
+        <a class="btn btn-sm btn-secondary upload__btn" (click)="uploadBtn.click()">Upload Photo</a>
       </div>
       <div class="edit__data">
         <div class="edit__row">
