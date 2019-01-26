@@ -4,7 +4,7 @@
     <div class="edit__container">
       <div class="edit__image-box">
         <div class="initial-box" *ngIf="!user.imgUrl">{{!!user.firstName ? user.firstName.substr(0,1): '' | uppercase}}{{!!user.lastName ? user.lastName.substr(0,1) : '' | uppercase}}</div>
-        <img [src]="user.imgUrl" *ngIf="user.imgUrl" alt="Profile picture">
+        <img class="edit__image" [src]="user.imgUrl" *ngIf="user.imgUrl" alt="Profile picture">
         <input type="file" #uploadBtn (change)="startUpload($event.target.files)" class="d-none">
         <button class="btn btn-sm btn-secondary upload__btn" (click)="uploadBtn.click()">Upload Photo</button>
       </div>
