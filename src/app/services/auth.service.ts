@@ -5,7 +5,7 @@ import { User } from '../models/user.model';
 import { tap, catchError } from 'rxjs/operators';
 import { LocalStorageService } from 'angular-web-storage';
 import { Router } from '@angular/router';
-
+import { environment } from "../../environments/environment";
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class AuthService {
 
-  private authUrl = 'http://localhost:3000/auth';
+  private authUrl = `${environment.API_URL}/auth`;
 
 
   constructor(
