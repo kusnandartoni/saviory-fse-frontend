@@ -16,9 +16,10 @@ export class RegisterComponent implements OnInit {
     email: null,
     password: null,
     phone: null,
-    country: null,
+    city: null,
     birthday: null,
-    isAdmin: false
+    isAdmin: false,
+    imgUrl: null
   }
   agree = false;
 

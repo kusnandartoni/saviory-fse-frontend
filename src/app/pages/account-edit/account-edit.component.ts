@@ -20,9 +20,10 @@ export class AccountEditComponent implements OnInit {
     email: null,
     password: null,
     phone: null,
-    country: null,
+    city: null,
     birthday: null,
     isAdmin: false,
+    imgUrl: null
   }
   id = this.route.snapshot.params['id'];
   me: any = {};
@@ -32,6 +33,8 @@ export class AccountEditComponent implements OnInit {
   snapshot: Observable<any>;
   downloadUrl: Observable<string>;
 
+  isActive: boolean = true;
+  
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -76,6 +79,7 @@ export class AccountEditComponent implements OnInit {
   }
 
   startUpload(event: FileList){
+    this.isActive = false;
     const file = event.item(0);
     if(file.type.split('/')[0]!=='image'){
       alert('unsupported file type');
@@ -90,14 +94,11 @@ export class AccountEditComponent implements OnInit {
       finalize(()=>{
         this.downloadUrl = ref.getDownloadURL();
         ref.getDownloadURL().subscribe(url=>{
-          console.log(url);
+          this.user.imgUrl = url;
+          this.isActive = true;
         })
       })
     ).subscribe()
-  }
-
-  isActive(snapshot) {
-    return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
   }
   
 }

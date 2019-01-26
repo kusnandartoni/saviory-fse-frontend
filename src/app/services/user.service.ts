@@ -45,7 +45,7 @@ export class UserService {
   }
 
   getUserByCity(city: string): Observable<User[]> {
-    const url = `${this.userUrl}?country=${city}`;
+    const url = `${this.userUrl}?city=${city}`;
     return this.http.get<User[]>(url).pipe(
       tap(_ => this.log('fetched users')),
       catchError(this.handleError('getUsers', []))

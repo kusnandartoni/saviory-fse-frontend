@@ -3,7 +3,7 @@
     {{percentage | async}}
     <div class="edit__container">
       <div class="edit__image-box">
-        <img src="{{downloadUrl|async}}" alt="Profile picture">
+        <img [src]="user.imgUrl" *ngIf="user.imgUrl" alt="Profile picture">
         <input type="file" #uploadBtn (change)="startUpload($event.target.files)" class="d-none">
         <a class="btn btn-sm btn-secondary upload__btn" (click)="uploadBtn.click()">Upload Photo</a>
       </div>
@@ -46,7 +46,7 @@
         </div>
         <div class="edit__row">
           <div class="edit__row-left">
-            <span>PHONE</span>
+            <label for="phone">PHONE</label>
             <input 
                 class="edit__input" 
                 [(ngModel)]="user.phone" 
@@ -55,8 +55,8 @@
                 name="phone">
           </div>
           <div class="edit__row-right">
-            <span>City:</span>
-            <select id="country" name="country" [(ngModel)]="user.country" class="edit__input">
+            <label for="city">City:</label>
+            <select id="city" name="city" [(ngModel)]="user.city" class="edit__input">
               <option value="Jakarta">Jakarta</option>
               <option value="Bandung">Bandung</option>
               <option value="Surabaya">Surabaya</option>
@@ -74,8 +74,8 @@
         </div>
       </div>
       <div class="edit__action">
-        <a class="btn btn-sm btn-secondary" (click)="cancel()">Cancel</a>
-        <a class="btn btn-sm btn-secondary" (click)="save()">Save</a>
+        <button class="btn btn-sm btn-secondary" (click)="cancel()">Cancel</button>
+        <button [disabled]="!isActive" class="btn btn-sm btn-secondary" (click)="save()">Save</button>
       </div>
     </div>
   </div>

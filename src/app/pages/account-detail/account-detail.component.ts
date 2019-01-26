@@ -32,8 +32,6 @@ export class AccountDetailComponent implements OnInit {
     this.userService.getUserById(this.id).subscribe(user=> {
       this.user = user;
     });
-    console.log(this.me)
-    console.log(this.user)
   }
 
   sessionCheck(){
@@ -41,7 +39,6 @@ export class AccountDetailComponent implements OnInit {
     if (token) {
       this.authService.me(token).subscribe(
         user=>{
-          console.log("from api",user);
           this.me = user
         }
       );

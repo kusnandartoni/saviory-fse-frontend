@@ -11,7 +11,7 @@
         <select name="" id="" [(ngModel)]="searchCategory" class="search__input">
           <option value="name">filter by name</option>
           <option value="email">filter by email</option>
-          <option value="country">filte by city</option>
+          <option value="city">filte by city</option>
         </select>
       </div>
       <a class="btn btn-secondary" routerLink="/register">add new account</a>
@@ -32,8 +32,8 @@
           <tbody>
             <tr *ngFor="let user of users">
               <td>
-                <div class="initial-box">{{getInitial(user.firstName) | uppercase}}{{getInitial(user.lastName) | uppercase}}</div>
-                <img src="" alt="profile picture" *ngIf="1===0">
+                <div class="initial-box" *ngIf="!user.imgUrl">{{getInitial(user.firstName) | uppercase}}{{getInitial(user.lastName) | uppercase}}</div>
+                <img [src]="user.imgUrl" alt="profile picture" *ngIf="user.imgUrl" style="width:50px;">
               </td>
               <td class="d-flex flex-column">
                 <span>{{user.firstName}} {{user.lastName}}</span>
@@ -41,7 +41,7 @@
               </td>
               <td>{{user.phone}}</td>
               <td>{{user.birthday}}</td>
-              <td>{{user.country}}</td>
+              <td>{{user.city}}</td>
               <td class="text-right">
                 <div class="action-group">
                   <a class="btn btn-sm btn-secondary" routerLink="/detail/{{user._id}}">View</a>

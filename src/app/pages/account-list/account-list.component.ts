@@ -73,7 +73,7 @@ export class AccountListComponent implements OnInit {
       this.userService.getUserByEmail(this.search).subscribe(users => {
         this.users = users;
       });
-    }else if(this.searchCategory === "country"){
+    }else if(this.searchCategory === "city"){
       this.userService.getUserByCity(this.search).subscribe(users => {
         this.users = users;
       });

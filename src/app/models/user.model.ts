@@ -5,7 +5,8 @@ export class User {
     email: String;
     password: String;
     phone: String;
-    country: String;
+    city: String;
     birthday: String;
     isAdmin: Boolean;
+    imgUrl: String;
 }
