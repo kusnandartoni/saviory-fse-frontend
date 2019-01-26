@@ -3,7 +3,8 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user.model';
 import { tap, catchError } from 'rxjs/operators';
-import { SessionStorageService } from 'angular-web-storage';
+import { LocalStorageService } from 'angular-web-storage';
+import { Router } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,7 +20,8 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private session: SessionStorageService
+    private session: LocalStorageService,
+    private router: Router
   ) { }
 
   register (user: User): Observable<User> {
@@ -49,12 +51,21 @@ export class AuthService {
     );
   }
 
-  logout() {
+  sessionCheck(url) {
+    const auth = this.session.get('currentUser');
+    if(auth){
+      return auth.token
+    }
+    this.session.set('next', url);
+    this.router.navigateByUrl('/login');
+  }
 
+  logout(){
+    this.session.remove('currentUser');
+    this.router.navigateByUrl('/login');
   }
   
   private log(message: string) {
-    console.log(`UserService: ${message}`);
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

@@ -80,7 +80,6 @@ export class UserService {
   }
 
   private log(message: string) {
-    console.log(`UserService: ${message}`);
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
