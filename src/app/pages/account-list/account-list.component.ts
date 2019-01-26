@@ -22,7 +22,7 @@ export class AccountListComponent implements OnInit {
   users: User[];
   faTrash = faTrashAlt;
   me: any = {};
-
+  page = 1;
 
   constructor(
     private userService: UserService,
