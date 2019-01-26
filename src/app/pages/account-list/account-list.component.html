@@ -8,7 +8,7 @@
               (ngModelChange)="searchUser($event)"
               class="search__input mr-2"
               >
-        <select [(ngModel)]="searchCategory" class="search__input">
+        <select [(ngModel)]="searchCategory" class="search__input" (change)="getFilteredUser()">
           <option value="name">filter by name</option>
           <option value="email">filter by email</option>
           <option value="city">filte by city</option>

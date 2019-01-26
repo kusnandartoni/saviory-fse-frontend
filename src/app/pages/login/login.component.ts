@@ -19,6 +19,10 @@ export class LoginComponent implements OnInit {
     private session: LocalStorageService
   ) {
     this.next = this.session.get('nextPage');
+    const auth = this.authService.sessionCheck('/list');
+    if(auth) {
+      this.router.navigateByUrl(this.next || '/list');
+    }
   }
 
   ngOnInit() {
