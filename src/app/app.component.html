@@ -4,8 +4,9 @@
         <div class="header__item-box">
           <span class="logo">logo</span>
         </div>
-        <div class="header__item-box">
-          <span class="signout">Logout</span>
+        <div class="header__item-box" *ngIf="!(router.url=='/login')">
+          <a class="signout" *ngIf="(router.url=='/register')" (click)="login()">Login</a>
+          <a class="signout" *ngIf="!(router.url=='/register')" (click)="logout()">Logout</a>
         </div>
       </div>
     </header>
